@@ -25,7 +25,7 @@ export default function Home(props) {
 
   return (
     <Layout title="Waifu | AnimeMoeUs">
-      <div>
+      <div style={{ backgroundColor: "#f2f2f2" }}>
         <Navbar />
 
         <InfiniteScroll
