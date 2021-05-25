@@ -43,7 +43,7 @@ export default function Home(props) {
               {images.map((image) => (
                 <div
                   key={image.id}
-                  className="card  border-0 rounded-0 animate__animated animate__fadeInUp"
+                  className="card  border-0 rounded-0 animate__animated animate__fadeIn"
                   style={{ width: "100%" }}
                 >
                   <img src={image.thumbnail} className="shadow-sm" />
