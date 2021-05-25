@@ -1,6 +1,7 @@
 import Masonry from "react-masonry-css";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useState } from "react";
+import "animate.css/animate.min.css";
 
 import { Navbar } from "../components/molecules";
 import { Layout } from "../components/templates";
@@ -43,7 +44,7 @@ export default function Home(props) {
               {images.map((image) => (
                 <div
                   key={image.id}
-                  className="card  border-0 rounded-0"
+                  className="card  border-0 rounded-0 animate__animated animate__fadeInUp"
                   style={{ width: "100%" }}
                 >
                   <img src={image.thumbnail} className="shadow-sm" />
