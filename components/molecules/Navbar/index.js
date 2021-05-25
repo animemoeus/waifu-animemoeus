@@ -1,10 +1,12 @@
+import Link from "next/link";
+
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
-          Navbar
-        </a>
+        <Link href="/">
+          <a className="navbar-brand">Waifu Collections</a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -18,11 +20,11 @@ export default function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="#">
                 Home
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

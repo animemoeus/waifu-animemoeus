@@ -30,7 +30,7 @@ export default function Home(props) {
         dataLength={images.length}
         next={fetchMoreData}
         hasMore={hasMore}
-        loader={<h4 className="text-center">Loading...</h4>}
+        loader={<p className="text-center fs-3">Loading...</p>}
       >
         <div className="container-fluid mt-3">
           <Masonry
@@ -44,7 +44,7 @@ export default function Home(props) {
                 className="card  border-0 rounded-0"
                 style={{ width: "100%" }}
               >
-                <img src={image.thumbnail} className=" shadow-sm" />
+                <img src={image.thumbnail} className="shadow-sm" />
               </div>
             ))}
           </Masonry>
