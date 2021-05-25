@@ -3,6 +3,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useState } from "react";
 
 import { Navbar } from "../components/molecules";
+import { Layout } from "../components/templates";
 
 export default function Home(props) {
   const [images, setImages] = useState(props.images);
@@ -23,34 +24,36 @@ export default function Home(props) {
   };
 
   return (
-    <div>
-      <Navbar />
+    <Layout title="Waifu | AnimeMoeUs">
+      <div>
+        <Navbar />
 
-      <InfiniteScroll
-        dataLength={images.length}
-        next={fetchMoreData}
-        hasMore={hasMore}
-        loader={<p className="text-center fs-3">Loading...</p>}
-      >
-        <div className="container-fluid mt-3">
-          <Masonry
-            breakpointCols={{ default: 5, 1100: 4, 700: 3, 500: 2 }}
-            className="my-masonry-grid"
-            columnClassName="my-masonry-grid_column"
-          >
-            {images.map((image) => (
-              <div
-                key={image.id}
-                className="card  border-0 rounded-0"
-                style={{ width: "100%" }}
-              >
-                <img src={image.thumbnail} className="shadow-sm" />
-              </div>
-            ))}
-          </Masonry>
-        </div>
-      </InfiniteScroll>
-    </div>
+        <InfiniteScroll
+          dataLength={images.length}
+          next={fetchMoreData}
+          hasMore={hasMore}
+          loader={<p className="text-center fs-3">Loading...</p>}
+        >
+          <div className="container-fluid mt-3">
+            <Masonry
+              breakpointCols={{ default: 5, 1100: 4, 700: 3, 500: 2 }}
+              className="my-masonry-grid"
+              columnClassName="my-masonry-grid_column"
+            >
+              {images.map((image) => (
+                <div
+                  key={image.id}
+                  className="card  border-0 rounded-0"
+                  style={{ width: "100%" }}
+                >
+                  <img src={image.thumbnail} className="shadow-sm" />
+                </div>
+              ))}
+            </Masonry>
+          </div>
+        </InfiniteScroll>
+      </div>
+    </Layout>
   );
 }
 
