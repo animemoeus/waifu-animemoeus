@@ -1,4 +1,5 @@
 import "../styles/custom.css";
+import "animate.css/animate.min.css";
 
 function MyApp({ Component, pageProps }) {
   return (

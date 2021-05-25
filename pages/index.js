@@ -1,7 +1,6 @@
 import Masonry from "react-masonry-css";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useState } from "react";
-import "animate.css/animate.min.css";
 
 import { Navbar } from "../components/molecules";
 import { Layout } from "../components/templates";
@@ -58,7 +57,7 @@ export default function Home(props) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch("https://api.animemoe.us/images/");
   const response = await res.json();
 
