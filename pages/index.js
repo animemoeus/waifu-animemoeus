@@ -1,6 +1,7 @@
 import Masonry from "react-masonry-css";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useState } from "react";
+import Link from "next/link";
 
 import { Navbar } from "../components/molecules";
 import { Layout } from "../components/templates";
@@ -25,7 +26,7 @@ export default function Home(props) {
 
   return (
     <Layout title="Waifu | AnimeMoeUs">
-      <div style={{ backgroundColor: "#f2f2f2" }}>
+      <div style={{ backgroundColor: "#f2f2f2", minHeight: "100vh" }}>
         <Navbar />
 
         <InfiniteScroll
@@ -46,7 +47,14 @@ export default function Home(props) {
                   className="card  border-0 rounded-0 animate__animated animate__fadeIn"
                   style={{ width: "100%" }}
                 >
-                  <img src={image.thumbnail} className="shadow-sm" />
+                  <Link href={`/${image.image_id}/`}>
+                    <a>
+                      <img
+                        src={image.thumbnail}
+                        className="img-fluid shadow-sm"
+                      />
+                    </a>
+                  </Link>
                 </div>
               ))}
             </Masonry>
