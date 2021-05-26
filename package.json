@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "node server.js",
-    "devstart": "next start",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "next start"
   },
   "dependencies": {
     "animate.css": "^4.1.1",
