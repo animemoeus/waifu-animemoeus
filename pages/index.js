@@ -29,13 +29,13 @@ export default function Home(props) {
       <div style={{ backgroundColor: "#f2f2f2", minHeight: "100vh" }}>
         <Navbar />
 
-        <InfiniteScroll
-          dataLength={images.length}
-          next={fetchMoreData}
-          hasMore={hasMore}
-          loader={<p className="text-center fs-3">Loading...</p>}
-        >
-          <div className="container-fluid mt-3">
+        <div className="container-fluid mt-3">
+          <InfiniteScroll
+            dataLength={images.length}
+            next={fetchMoreData}
+            hasMore={hasMore}
+            loader={<p className="text-center fs-3">Loading...</p>}
+          >
             <Masonry
               breakpointCols={{ default: 5, 1100: 4, 700: 3, 500: 2 }}
               className="my-masonry-grid"
@@ -58,8 +58,8 @@ export default function Home(props) {
                 </div>
               ))}
             </Masonry>
-          </div>
-        </InfiniteScroll>
+          </InfiniteScroll>
+        </div>
       </div>
     </Layout>
   );
