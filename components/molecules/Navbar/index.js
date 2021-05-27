@@ -27,7 +27,7 @@ export default function Navbar() {
                 href="https://t.me/animemoeus_bot"
                 target="_blank"
               >
-                <button type="button" className="btn btn-outline-dark">
+                <button type="button btn-sm" className="btn btn-outline-dark">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
