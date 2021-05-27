@@ -1,4 +1,5 @@
 import Error from "next/error";
+import { DiscussionEmbed } from "disqus-react";
 
 import { Navbar } from "../components/molecules";
 import { Layout } from "../components/templates";
@@ -7,6 +8,12 @@ export default function Detail(props) {
   if (props.status !== 200) {
     return <Error statusCode={props.status} />;
   }
+
+  const disqusConfig = {
+    url: `https:waifu.animemoe.us/${props.image.image_id}`,
+    identifier: props.image.image_id, // Single post id
+    title: `${props.image.image_id} | AnimeMoeUs`, // Single post title
+  };
 
   return (
     <Layout title={`${props.image.image_id} | AnimeMoeUs`}>
@@ -44,6 +51,13 @@ export default function Detail(props) {
                   </a>
                 </p>
               </div>
+            </div>
+            <hr />
+            <div>
+              <DiscussionEmbed
+                shortname="waifu-animemoeus"
+                config={disqusConfig}
+              />
             </div>
           </div>
         </div>

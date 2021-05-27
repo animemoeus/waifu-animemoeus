@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "animate.css": "^4.1.1",
+    "disqus-react": "^1.0.11",
     "next": "10.2.3",
     "nprogress": "^0.2.0",
     "react": "17.0.2",
