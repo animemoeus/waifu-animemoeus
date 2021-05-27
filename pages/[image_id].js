@@ -14,9 +14,9 @@ export default function Detail(props) {
         <Navbar />
 
         <div className="container-md p-1 mt-3">
-          <div className="container-fluid border rounded bg-white mb-3">
+          <div className="container-fluid border rounded shadow bg-white mb-3">
             <div className="row">
-              <div className="col-lg-8 p-1">
+              <div className="col-lg-7 p-1">
                 <img
                   src={props.image.original_image}
                   className="border rounded shadow-sm"
@@ -24,12 +24,9 @@ export default function Detail(props) {
                   alt="..."
                 />
               </div>
-              <div className="col-lg-4 pt-2">
+              <div className="col-lg-5 pt-2">
                 <p className="text-center fs-4">{props.image.image_id}</p>
-                <hr className="m-0" />
-                <p className="text-muted">
-                  <small>By {props.image.posted_by}</small>
-                </p>
+                <hr />
                 <p>Artist: {props.image.artist_name}</p>
                 <p>{props.image.caption}</p>
                 <p>
@@ -45,7 +42,7 @@ export default function Detail(props) {
                 </p>
               </div>
             </div>
-            <hr />
+            <hr className="mb-0" />
             <div>
               <Disqus image={props.image} />
             </div>
