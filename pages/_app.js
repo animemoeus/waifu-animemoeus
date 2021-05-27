@@ -3,7 +3,7 @@ import NProgress from "nprogress";
 
 import "../styles/custom.css";
 import "animate.css/animate.min.css";
-import "nprogress/nprogress.css";
+import "../styles/nprogress.css";
 
 // nprogress loading
 Router.events.on("routeChangeStart", () => NProgress.start());
