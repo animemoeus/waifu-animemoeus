@@ -10,7 +10,7 @@ export default function Detail(props) {
   }
 
   const disqusConfig = {
-    url: `https:waifu.animemoe.us/${props.image.image_id}`,
+    url: `https://waifu.animemoe.us/${props.image.image_id}`,
     identifier: props.image.image_id, // Single post id
     title: `${props.image.image_id} | AnimeMoeUs`, // Single post title
   };
