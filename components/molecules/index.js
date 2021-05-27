@@ -1,3 +1,4 @@
+import Disqus from "./Disqus";
 import Navbar from "./Navbar";
 
-export { Navbar };
+export { Disqus, Navbar };
