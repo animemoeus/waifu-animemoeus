@@ -54,7 +54,7 @@ export default function Detail(props) {
 }
 
 export async function getServerSideProps({ params }) {
-  const res = await fetch(`https://api.animemoe.us/images/${params.image_id}/`);
+  const res = await fetch(`https://api.animemoe.us/waifu/${params.image_id}/`);
   const response = await res.json();
 
   return { props: { status: res.status, image: response } };

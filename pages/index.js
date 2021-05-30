@@ -12,7 +12,7 @@ export default function Home(props) {
   const [pageNow, setPageNow] = useState(2);
 
   const fetchMoreData = () => {
-    fetch(`https://api.animemoe.us/images/?page=${pageNow}`)
+    fetch(`https://api.animemoe.us/waifu/?page=${pageNow}`)
       .then((res) => res.json())
       .then((response) => {
         if (response.next === null) {
@@ -66,7 +66,7 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch("https://api.animemoe.us/images/");
+  const res = await fetch("https://api.animemoe.us/waifu/");
   const response = await res.json();
 
   return { props: { images: response.results } };
