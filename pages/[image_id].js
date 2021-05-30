@@ -27,7 +27,7 @@ export default function Detail(props) {
               <div className="col-lg-5 pt-2">
                 <p className="text-center fs-4">{props.image.image_id}</p>
                 <hr />
-                <p>Artist: {props.image.artist_name}</p>
+                <p>Artist: {props.image.creator_name}</p>
                 <p>{props.image.caption}</p>
                 <p>
                   Source:{" "}
