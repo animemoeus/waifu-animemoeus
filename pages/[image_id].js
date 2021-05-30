@@ -1,4 +1,5 @@
 import Error from "next/error";
+import Image from "next/image";
 
 import { Disqus, Navbar } from "../components/molecules";
 import { Layout } from "../components/templates";
@@ -17,12 +18,20 @@ export default function Detail(props) {
           <div className="container-fluid border rounded shadow bg-white mb-3">
             <div className="row">
               <div className="col-lg-7 p-1">
-                <img
-                  src={props.image.original_image}
-                  className="border rounded shadow-sm"
-                  style={{ width: "100%" }}
-                  alt="..."
-                />
+                <div
+                  className="grumpy-image-wrapper bg-light"
+                  style={{
+                    paddingBottom: `${
+                      (props.image.height / props.image.width) * 100
+                    }%`,
+                  }}
+                >
+                  <Image
+                    src={props.image.original_image}
+                    layout={"fill"}
+                    quality={100}
+                  />
+                </div>
               </div>
               <div className="col-lg-5 pt-2">
                 <p className="text-center fs-4">{props.image.image_id}</p>

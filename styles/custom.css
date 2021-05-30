@@ -16,3 +16,9 @@
   background: transparent;
   margin-bottom: 10px;
 }
+
+.grumpy-image-wrapper {
+  width: 100%;
+  height: 0;
+  position: relative;
+}

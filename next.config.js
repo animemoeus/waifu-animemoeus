@@ -1,5 +1,5 @@
 module.exports = {
   images: {
-    domains: ["tumblr.com"],
+    domains: ["64.media.tumblr.com"],
   },
 };

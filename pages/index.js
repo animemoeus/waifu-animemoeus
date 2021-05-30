@@ -2,6 +2,7 @@ import Masonry from "react-masonry-css";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import { Navbar } from "../components/molecules";
 import { Layout } from "../components/templates";
@@ -44,15 +45,14 @@ export default function Home(props) {
               {images.map((image) => (
                 <div
                   key={image.id}
-                  className="card  border-0 rounded-0 animate__animated animate__fadeIn"
-                  style={{ width: "100%" }}
+                  className="card grumpy-image-wrapper bg-light border-0 rounded-0 animate__animated animate__fadeIn"
+                  style={{
+                    paddingBottom: `${(image.height / image.width) * 100}%`,
+                  }}
                 >
                   <Link href={`/${image.image_id}/`}>
                     <a>
-                      <img
-                        src={image.thumbnail}
-                        className="img-fluid shadow-sm"
-                      />
+                      <Image src={image.thumbnail} layout={"fill"} />
                     </a>
                   </Link>
                 </div>
