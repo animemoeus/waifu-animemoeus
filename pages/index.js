@@ -52,7 +52,11 @@ export default function Home(props) {
                 >
                   <Link href={`/${image.image_id}/`}>
                     <a target="_blank">
-                      <Image src={image.thumbnail} layout={"fill"} />
+                      <Image
+                        src={image.thumbnail}
+                        layout={"fill"}
+                        quality={30}
+                      />
                     </a>
                   </Link>
                 </div>
