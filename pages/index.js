@@ -51,7 +51,7 @@ export default function Home(props) {
                   }}
                 >
                   <Link href={`/${image.image_id}/`}>
-                    <a target="_blank">
+                    <a target="_blank" rel="noopener noreferrer">
                       <Image
                         src={image.thumbnail}
                         layout={"fill"}
