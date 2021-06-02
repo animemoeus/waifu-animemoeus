@@ -30,6 +30,7 @@ export default function Detail(props) {
                     src={props.image.original_image}
                     layout={"fill"}
                     quality={100}
+                    alt={`${props.image.creator_name} ~ ${props.image.image_id}`}
                   />
                 </div>
               </div>

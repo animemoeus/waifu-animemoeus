@@ -56,6 +56,7 @@ export default function Home(props) {
                         src={image.thumbnail}
                         layout={"fill"}
                         quality={30}
+                        alt={image.creator_name}
                       />
                     </a>
                   </Link>
