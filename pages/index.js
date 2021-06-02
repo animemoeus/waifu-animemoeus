@@ -26,7 +26,7 @@ export default function Home(props) {
   };
 
   return (
-    <Layout title="Waifu | AnimeMoeUs">
+    <Layout title="Waifu | AnimeMoeUs" description="Waifu Collections">
       <div style={{ backgroundColor: "#f2f2f2", minHeight: "100vh" }}>
         <Navbar />
 

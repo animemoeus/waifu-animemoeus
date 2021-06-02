@@ -10,7 +10,11 @@ export default function Detail(props) {
   }
 
   return (
-    <Layout title={`${props.image.image_id} | AnimeMoeUs`}>
+    <Layout
+      title={`${props.image.image_id} | AnimeMoeUs`}
+      description={`Waifu ${props.image.image_id} by ${props.image.creator_name}`}
+      keywords={`${props.image.creator_name}, ${props.image.creator_username}`}
+    >
       <div style={{ minHeight: "100vh" }}>
         <Navbar />
 
