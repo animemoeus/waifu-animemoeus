@@ -18,7 +18,7 @@ export default function Detail(props) {
       <div style={{ minHeight: "100vh" }}>
         <Navbar />
 
-        <div className="container-md p-1 mt-3">
+        <div className="container-sm p-1 mt-3">
           <div className="container-fluid border rounded shadow bg-white mb-3">
             <div className="row">
               <div className="col-lg-7 p-1">
@@ -56,7 +56,7 @@ export default function Detail(props) {
                 </p>
               </div>
             </div>
-            <hr className="mb-0" />
+            <hr />
             <div>
               <Disqus image={props.image} />
             </div>
