@@ -11,9 +11,9 @@ export default function Detail(props) {
 
   return (
     <Layout
-      title={`${props.image.image_id} | AnimeMoeUs`}
+      title={`${props.image.image_id} | AnimeMoeUs Waifu`}
       description={`Waifu ${props.image.image_id} by ${props.image.creator_name}`}
-      keywords={`${props.image.creator_name}, ${props.image.creator_username}`}
+      keywords={`${props.image.creator_name}, ${props.image.creator_username}, ${props.image.image_id}`}
     >
       <div style={{ minHeight: "100vh" }}>
         <Navbar />
@@ -34,7 +34,8 @@ export default function Detail(props) {
                     src={props.image.original_image}
                     layout={"fill"}
                     quality={100}
-                    alt={`${props.image.creator_name} ~ ${props.image.image_id}`}
+                    alt={`Image ${props.image.image_id} by ${props.image.creator_name}`}
+                    className="border rounded shadow"
                   />
                 </div>
               </div>
