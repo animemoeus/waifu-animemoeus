@@ -1,11 +1,11 @@
-import Masonry from "react-masonry-css";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Link from "next/link";
+import Masonry from "react-masonry-css";
+import { useState } from "react";
 
-import { Navbar } from "../components/molecules";
 import { Layout } from "../components/templates";
+import { Navbar } from "../components/molecules";
 
 export default function Home(props) {
   const [images, setImages] = useState(props.images);
@@ -51,12 +51,12 @@ export default function Home(props) {
                   }}
                 >
                   <Link href={`/${image.image_id}/`}>
-                    <a target="_blank" rel="noopener noreferrer">
+                    <a>
                       <Image
                         src={image.thumbnail}
                         layout={"fill"}
-                        quality={30}
-                        alt={image.creator_name}
+                        quality={50}
+                        alt={`Image ${image.image_id} by ${image.creator_name}`}
                       />
                     </a>
                   </Link>
