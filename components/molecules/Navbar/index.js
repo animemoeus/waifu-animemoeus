@@ -26,6 +26,7 @@ export default function Navbar() {
                 aria-current="page"
                 href="https://t.me/animemoeus_bot"
                 target="_blank"
+                rel="noreferrer"
               >
                 <button type="button btn-sm" className="btn btn-outline-dark">
                   <svg
