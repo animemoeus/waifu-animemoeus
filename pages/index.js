@@ -29,12 +29,16 @@ export default function Home(props) {
 
     // restore the scroll position
     if (scrollPosition > 0) {
-      window.scrollTo(0, scrollPosition);
+      setTimeout(() => {
+        window.scrollTo(0, scrollPosition);
+      }, 0);
     }
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // add current scrollPosition to global state
