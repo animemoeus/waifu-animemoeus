@@ -8,12 +8,12 @@ import { Layout } from "../components/templates";
 import { Navbar } from "../components/molecules";
 
 export default function Home(props) {
-  const [images, setImages] = useState(props.images);
+  const [images, setImages] = useState(props.response.results);
   const [hasMore, setHasMore] = useState(true);
-  const [pageNow, setPageNow] = useState(2);
+  const [pageNow, setPageNow] = useState(1);
 
   const fetchMoreData = () => {
-    fetch(`https://api.animemoe.us/waifu/?page=${pageNow}`)
+    fetch(`https://api.animemoe.us/waifu/?page=${pageNow + 1}`)
       .then((res) => res.json())
       .then((response) => {
         if (response.next === null) {
@@ -74,5 +74,5 @@ export async function getServerSideProps() {
   const res = await fetch("https://api.animemoe.us/waifu/");
   const response = await res.json();
 
-  return { props: { images: response.results } };
+  return { props: { response: response } };
 }
