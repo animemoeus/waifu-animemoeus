@@ -1,6 +1,7 @@
 import Router from "next/router";
 import Script from "next/script";
 import NProgress from "nprogress";
+import { useState } from "react";
 
 import "../styles/custom.css";
 import "animate.css/animate.min.css";
@@ -12,6 +13,10 @@ Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
+  const [images, setImages] = useState([]);
+  const [pageNow, setPageNow] = useState(1);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
   return (
     <>
       <link
@@ -26,7 +31,15 @@ function MyApp({ Component, pageProps }) {
         crossOrigin="anonymous"
       />
 
-      <Component {...pageProps} />
+      <Component
+        {...pageProps}
+        images={images}
+        setImages={setImages}
+        pageNow={pageNow}
+        setPageNow={setPageNow}
+        scrollPosition={scrollPosition}
+        setScrollPosition={setScrollPosition}
+      />
     </>
   );
 }
