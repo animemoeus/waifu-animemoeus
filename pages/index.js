@@ -24,6 +24,8 @@ export default function Home(props) {
 
         setImages(images.concat(response.results));
         setPageNow(parseInt(pageNow) + 1);
+
+        props.setImages(images);
       });
   };
 
