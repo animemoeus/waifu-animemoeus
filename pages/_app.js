@@ -14,6 +14,7 @@ Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
   const [images, setImages] = useState([]);
+  const [pageNow, setPageNow] = useState(1);
 
   return (
     <>
@@ -29,7 +30,13 @@ function MyApp({ Component, pageProps }) {
         crossOrigin="anonymous"
       />
 
-      <Component {...pageProps} images={images} setImages={setImages} />
+      <Component
+        {...pageProps}
+        images={images}
+        setImages={setImages}
+        pageNow={pageNow}
+        setPageNow={setPageNow}
+      />
     </>
   );
 }

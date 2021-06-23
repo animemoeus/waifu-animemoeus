@@ -12,7 +12,9 @@ export default function Home(props) {
     props.images.length === 0 ? props.response.results : props.images
   );
   const [hasMore, setHasMore] = useState(true);
-  const [pageNow, setPageNow] = useState(1);
+  const [pageNow, setPageNow] = useState(
+    props.pageNow === 1 ? 1 : props.pageNow
+  );
 
   const fetchMoreData = () => {
     fetch(`https://api.animemoe.us/waifu/?page=${pageNow + 1}`)
@@ -26,6 +28,7 @@ export default function Home(props) {
         setPageNow(parseInt(pageNow) + 1);
 
         props.setImages(images);
+        props.setPageNow(pageNow);
       });
   };
 
