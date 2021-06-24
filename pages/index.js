@@ -34,7 +34,7 @@ export default function Home(props) {
 
   return (
     <Layout title="Waifu | AnimeMoeUs" description="Waifu Collections">
-      <div style={{ backgroundColor: "#f2f2f2", minHeight: "100vh" }}>
+      <div style={{ minHeight: "100vh" }}>
         <Navbar />
 
         <div className="container-fluid mt-3">
@@ -52,7 +52,7 @@ export default function Home(props) {
               {images.map((image) => (
                 <div
                   key={image.id}
-                  className="card grumpy-image-wrapper bg-light border-0 rounded-0 animate__animated animate__fadeIn"
+                  className="border rounded shadow-sm grumpy-image-wrapper"
                   style={{
                     paddingBottom: `${(image.height / image.width) * 100}%`,
                   }}
@@ -64,6 +64,9 @@ export default function Home(props) {
                         layout={"fill"}
                         quality={25}
                         alt={`Image ${image.image_id} by ${image.creator_name}`}
+                        className="rounded"
+                        placeholder="blur"
+                        blurDataURL={image.thumbnail}
                       />
                     </a>
                   </Link>

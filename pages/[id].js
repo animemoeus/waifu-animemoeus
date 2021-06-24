@@ -23,7 +23,7 @@ export default function Detail(props) {
             <div className="row">
               <div className="col-lg-7 p-1">
                 <div
-                  className="grumpy-image-wrapper bg-light rounded"
+                  className="grumpy-image-wrapper border rounded shadow-sm"
                   style={{
                     paddingBottom: `${
                       (props.response.height / props.response.width) * 100
@@ -35,7 +35,9 @@ export default function Detail(props) {
                     layout={"fill"}
                     quality={100}
                     alt={`Image ${props.response.image_id} by ${props.response.creator_name}`}
-                    className="border rounded shadow"
+                    className="border rounded"
+                    placeholder="blur"
+                    blurDataURL={props.response.thumbnail}
                   />
                 </div>
               </div>
