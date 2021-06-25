@@ -12,6 +12,8 @@
   |/waifu/|https://waifu.animemoe.us |
   |/waifu/random/|\*|
   |/waifu/image-id-here/|https://waifu.animemoe.us|
+- Note:
+  - Use this extension to bypass CORS while testing this repository: https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino?hl=en
 
 ---
 
