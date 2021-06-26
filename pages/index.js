@@ -80,9 +80,9 @@ export default function Home(props) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch("https://api.animemoe.us/waifu/");
   const response = await res.json();
 
-  return { props: { response: response } };
+  return { props: { response: response }, revalidate: 1800 };
 }
