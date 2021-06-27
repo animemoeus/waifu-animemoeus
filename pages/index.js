@@ -34,7 +34,7 @@ export default function Home(props) {
 
   return (
     <Layout title="Waifu | AnimeMoeUs" description="Waifu Collections">
-      <div style={{ minHeight: "100vh" }}>
+      <div className="min-h-screen">
         <Navbar />
 
         <div className="pt-3 px-2">
