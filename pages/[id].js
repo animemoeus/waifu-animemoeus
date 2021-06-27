@@ -22,14 +22,16 @@ export default function Detail(props) {
           {/* grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 p-1 border rounded shadow-lg">
             {/* image */}
-            <div className="col-span-1 p-0 lg:col-span-2 p-1">
+            <div className="col-span-1 p-0 lg:p-1 lg:col-span-2">
               <div className="border rounded shadow-md p-0 bg-gray-300 overflow-hidden">
                 <Image
                   src={props.response.original_image}
                   width={props.response.width}
                   height={props.response.height}
                   layout="responsive"
-                  alt="arter"
+                  alt={`Image ${props.response.image_id} by ${props.response.creator_name}`}
+                  placeholder="blur"
+                  blurDataURL={props.response.thumbnail}
                 />
               </div>
             </div>
@@ -66,7 +68,7 @@ export default function Detail(props) {
             </div>
             {/* end image info */}
             {/* disqus */}
-            <div className="col-span-1 p-0 lg:col-span-3 p-1">
+            <div className="col-span-1 p-0 lg:col-span-3 lg:p-1">
               <hr className="my-3" />
               <div className="container px-2">
                 <Disqus data={props.response} />
