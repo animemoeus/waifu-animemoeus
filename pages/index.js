@@ -50,27 +50,18 @@ export default function Home(props) {
               columnClassName="my-masonry-grid_column"
             >
               {images.map((image) => (
-                <div
-                  key={image.id}
-                  className="border rounded shadow-sm grumpy-image-wrapper"
-                  style={{
-                    paddingBottom: `${(image.height / image.width) * 100}%`,
-                  }}
-                >
-                  <Link href={`/${image.image_id}/`}>
-                    <a>
-                      <Image
-                        src={image.thumbnail}
-                        layout={"fill"}
-                        quality={25}
-                        alt={`Image ${image.image_id} by ${image.creator_name}`}
-                        className="rounded"
-                        placeholder="blur"
-                        blurDataURL={image.thumbnail}
-                      />
-                    </a>
-                  </Link>
-                </div>
+                <Link key={image.id} href={`/${image.image_id}/`}>
+                  <a>
+                    <Image
+                      src={image.thumbnail}
+                      width={image.width}
+                      height={image.height}
+                      quality={25}
+                      alt={`Image ${image.image_id} by ${image.creator_name}`}
+                      className="border border-2"
+                    />
+                  </a>
+                </Link>
               ))}
             </Masonry>
           </InfiniteScroll>

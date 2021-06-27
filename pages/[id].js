@@ -22,41 +22,39 @@ export default function Detail(props) {
           <div className="container-fluid border rounded shadow bg-white mb-3">
             <div className="row">
               <div className="col-lg-7 p-1">
-                <div
-                  className="grumpy-image-wrapper border rounded shadow-sm"
-                  style={{
-                    paddingBottom: `${
-                      (props.response.height / props.response.width) * 100
-                    }%`,
-                  }}
-                >
-                  <Image
-                    src={props.response.original_image}
-                    layout={"fill"}
-                    quality={100}
-                    alt={`Image ${props.response.image_id} by ${props.response.creator_name}`}
-                    className="border rounded"
-                    placeholder="blur"
-                    blurDataURL={props.response.thumbnail}
-                  />
-                </div>
+                <Image
+                  src={props.response.original_image}
+                  width={props.response.width}
+                  height={props.response.height}
+                  quality={100}
+                  alt={`Image ${props.response.image_id} by ${props.response.creator_name}`}
+                  className="rounded  border p-0"
+                />
               </div>
               <div className="col-lg-5 pt-2">
-                <p className="text-center fs-4">{props.response.image_id}</p>
-                <hr />
-                <p>Artist: {props.response.creator_name}</p>
-                <p>{props.response.caption}</p>
-                <p>
-                  Source:{" "}
-                  <a
-                    href={props.response.source}
-                    className="text-decoration-none"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {props.response.source}
-                  </a>
+                <p className="text-center fs-4 m-1">
+                  {props.response.image_id}
                 </p>
+                <hr className="m-1" />
+                {props.response.creator_name && (
+                  <p>Creator: {props.response.creator_name}</p>
+                )}
+
+                {props.response.caption && <p>{props.response.caption}</p>}
+
+                {props.response.source && (
+                  <p>
+                    Source:{" "}
+                    <a
+                      href={`${props.response.source}`}
+                      className="text-decoration-none"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {props.response.source}
+                    </a>
+                  </p>
+                )}
               </div>
             </div>
             <hr />
