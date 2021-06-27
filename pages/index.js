@@ -37,7 +37,7 @@ export default function Home(props) {
       <div style={{ minHeight: "100vh" }}>
         <Navbar />
 
-        <div className="pt-3 px-1">
+        <div className="pt-3 px-2">
           <InfiniteScroll
             dataLength={images.length}
             next={fetchMoreData}
@@ -49,20 +49,28 @@ export default function Home(props) {
               className="my-masonry-grid"
               columnClassName="my-masonry-grid_column"
             >
-              {images.map((image) => (
-                <Link key={image.id} href={`/${image.image_id}/`}>
-                  <a>
-                    <Image
-                      src={image.thumbnail}
-                      width={image.width}
-                      height={image.height}
-                      quality={25}
-                      alt={`Image ${image.image_id} by ${image.creator_name}`}
-                      className="rounded"
-                    />
-                  </a>
-                </Link>
-              ))}
+              {images.map((image) => {
+                return (
+                  <div
+                    key={image.id}
+                    className="rounded-md shadow-md border border-gray-200 bg-gray-200 overflow-hidden"
+                  >
+                    <Link href={`/${image.image_id}/`}>
+                      <a>
+                        <Image
+                          src={image.thumbnail}
+                          quality={25}
+                          width={image.width}
+                          height={image.height}
+                          alt={`Image ${image.image_id} by ${image.creator_name}`}
+                          layout="responsive"
+                          className="rounded-md"
+                        />
+                      </a>
+                    </Link>
+                  </div>
+                );
+              })}
             </Masonry>
           </InfiniteScroll>
         </div>
