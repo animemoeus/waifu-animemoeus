@@ -28,6 +28,7 @@ export default function Detail(props) {
                   src={props.response.original_image}
                   width={props.response.width}
                   height={props.response.height}
+                  quality={100}
                   layout="responsive"
                   alt={`Image ${props.response.image_id} by ${props.response.creator_name}`}
                   placeholder="blur"
