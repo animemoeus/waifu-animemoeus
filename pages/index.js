@@ -37,12 +37,12 @@ export default function Home(props) {
       <div style={{ minHeight: "100vh" }}>
         <Navbar />
 
-        <div className="container-fluid mt-3">
+        <div className="pt-3 px-1">
           <InfiniteScroll
             dataLength={images.length}
             next={fetchMoreData}
             hasMore={hasMore}
-            loader={<p className="text-center fs-3">Loading...</p>}
+            loader={<p className="text-center text-lg">Loading...</p>}
           >
             <Masonry
               breakpointCols={{ default: 5, 1100: 4, 700: 3, 500: 2 }}
@@ -58,7 +58,7 @@ export default function Home(props) {
                       height={image.height}
                       quality={25}
                       alt={`Image ${image.image_id} by ${image.creator_name}`}
-                      className="border border-2"
+                      className="rounded"
                     />
                   </a>
                 </Link>
