@@ -1,9 +1,7 @@
 import Router from "next/router";
-import Script from "next/script";
 import NProgress from "nprogress";
 import { useState } from "react";
 
-import "animate.css/animate.min.css";
 import "tailwindcss/tailwind.css";
 import "../styles/custom.css";
 import "../styles/nprogress.css";
