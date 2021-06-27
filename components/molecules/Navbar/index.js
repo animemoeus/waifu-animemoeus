@@ -7,7 +7,7 @@ export default function Navbar() {
         <div className="px-3">
           <Link href="/">
             <a>
-              <span className="text-xl">Waifu Collections</span>
+              <span className="text-xl font-semibold">Waifu Collections</span>
             </a>
           </Link>
         </div>
