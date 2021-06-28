@@ -63,6 +63,10 @@ export default function Home(props) {
                           width={image.width}
                           height={image.height}
                           alt={`Image ${image.image_id} by ${image.creator_name}`}
+                          placeholder="blur"
+                          blurDataURL={`${image.thumbnail}?width=${parseInt(
+                            (image.width * 1) / 100
+                          )}&height=${parseInt((image.height * 1) / 100)}`}
                           layout="responsive"
                           className="rounded-md"
                         />

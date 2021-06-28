@@ -32,7 +32,9 @@ export default function Detail(props) {
                   layout="responsive"
                   alt={`Image ${props.response.image_id} by ${props.response.creator_name}`}
                   placeholder="blur"
-                  blurDataURL={props.response.thumbnail}
+                  blurDataURL={`${props.response.thumbnail}?width=${parseInt(
+                    (props.response.width * 1) / 100
+                  )}&height=${parseInt((props.response.height * 1) / 100)}`}
                 />
               </div>
             </div>
