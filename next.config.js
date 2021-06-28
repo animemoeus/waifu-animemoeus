@@ -3,7 +3,7 @@ module.exports = {
     domains: [
       "64.media.tumblr.com",
       "cdn.discordapp.com",
-      '"media.discordapp.net"',
+      "media.discordapp.net",
     ],
   },
   experimental: {
