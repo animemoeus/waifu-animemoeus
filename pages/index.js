@@ -87,5 +87,5 @@ export async function getStaticProps() {
   const res = await fetch("https://api.animemoe.us/waifu/");
   const response = await res.json();
 
-  return { props: { response: response }, revalidate: 1800 };
+  return { props: { response: response }, revalidate: 300 };
 }
