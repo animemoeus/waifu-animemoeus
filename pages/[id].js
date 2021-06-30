@@ -24,18 +24,24 @@ export default function Detail(props) {
             {/* image */}
             <div className="col-span-1 p-0 lg:p-1 lg:col-span-2">
               <div className="border rounded shadow-md p-0 bg-gray-300 overflow-hidden">
-                <Image
-                  src={props.response.original_image}
-                  width={props.response.width}
-                  height={props.response.height}
-                  quality={100}
-                  layout="responsive"
-                  alt={`Image ${props.response.image_id} by ${props.response.creator_name}`}
-                  placeholder="blur"
-                  blurDataURL={`${props.response.thumbnail}?width=${parseInt(
-                    (props.response.width * 1) / 100
-                  )}&height=${parseInt((props.response.height * 1) / 100)}`}
-                />
+                <a
+                  href={props.response.original_image}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Image
+                    src={props.response.original_image}
+                    width={props.response.width}
+                    height={props.response.height}
+                    quality={100}
+                    layout="responsive"
+                    alt={`Image ${props.response.image_id} by ${props.response.creator_name}`}
+                    placeholder="blur"
+                    blurDataURL={`${props.response.thumbnail}?width=${parseInt(
+                      (props.response.width * 1) / 100
+                    )}&height=${parseInt((props.response.height * 1) / 100)}`}
+                  />
+                </a>
               </div>
             </div>
             {/* end image */}
