@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Link from "next/link";
 import Masonry from "react-masonry-css";
@@ -57,17 +57,14 @@ export default function Home(props) {
                   >
                     <Link href={`/${image.image_id}/`}>
                       <a>
-                        <Image
-                          src={image.thumbnail}
-                          quality={10}
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={`${image.thumbnail}?width=${parseInt(
+                            (image.width * 77) / 100
+                          )}&height=${parseInt((image.height * 77) / 100)}`}
                           width={image.width}
                           height={image.height}
                           alt={`Image ${image.image_id} by ${image.creator_name}`}
-                          placeholder="blur"
-                          blurDataURL={`${image.thumbnail}?width=${parseInt(
-                            (image.width * 1) / 100
-                          )}&height=${parseInt((image.height * 1) / 100)}`}
-                          layout="responsive"
                           className="rounded-md"
                         />
                       </a>
