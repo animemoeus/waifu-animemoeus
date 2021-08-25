@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "disqus-react": "^1.1.1",
+    "disqus-react": "^1.1.2",
     "next": "^11.1.0",
     "nprogress": "^0.2.0",
     "react": "^17.0.2",
