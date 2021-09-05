@@ -1,7 +1,6 @@
 import Router from "next/router";
 import NProgress from "nprogress";
 
-// import "tailwindcss/tailwind.css";
 import "../styles/custom.css";
 import "../styles/nprogress.css";
 import "bootstrap/dist/css/bootstrap.min.css";

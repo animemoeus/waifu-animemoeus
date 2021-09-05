@@ -48,10 +48,7 @@ export default function Home(props) {
             >
               {images.map((image) => {
                 return (
-                  <div
-                    key={image.id}
-                    className="rounded-md shadow-md border border-gray-200 bg-gray-200 overflow-hidden"
-                  >
+                  <div key={image.id} className="rounded border">
                     <Link href={`/${image.image_id}/`}>
                       <a>
                         <Image
