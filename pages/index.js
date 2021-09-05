@@ -80,9 +80,12 @@ export default function Home(props) {
   );
 }
 
-export async function getServerSideProps() {
-  const res = await fetch("https://api.animemoe.us/waifu");
+export async function getServerSideProps({ query }) {
+  let url = await "https://api.animemoe.us/waifu/";
+
+  const res = await fetch(`${url}?nsfw=${query.nsfw || false}`);
   const response = await res.json();
+  console.log(response.next);
 
   return { props: { response: response } };
 }
