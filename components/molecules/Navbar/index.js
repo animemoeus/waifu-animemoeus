@@ -1,39 +1,48 @@
-import Link from "next/link";
+import React from "react";
+import BootstrapNavbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Button from "react-bootstrap/Button";
+
+import {
+  Github as GithubIcon,
+  Telegram as TelegramIcon,
+} from "react-bootstrap-icons";
 
 export default function Navbar() {
   return (
-    <nav>
-      <div className="flex justify-between items-center h-14 bg-white shadow">
-        <div className="px-3">
-          <Link href="/">
-            <a>
-              <span className="text-xl font-semibold">Waifu Collections</span>
-            </a>
-          </Link>
-        </div>
-        <div className="px-4">
-          <a
-            href="https://t.me/animemoeus_bot/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+    <BootstrapNavbar
+      sticky="top"
+      collapseOnSelect
+      expand="lg"
+      bg="dark"
+      variant="dark"
+    >
+      <Container>
+        <BootstrapNavbar.Brand href="/">Waifu AnimeMoeUs</BootstrapNavbar.Brand>
+        <BootstrapNavbar.Toggle aria-controls="responsive-BootstrapNavbar-nav" />
+        <BootstrapNavbar.Collapse id="responsive-BootstrapNavbar-nav">
+          <Nav className="ms-auto">
+            <Nav.Link
+              href="https://github.com/animemoeus/waifu-animemoeus"
+              target="_blank"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"
-              />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </nav>
+              <Button variant="outline-light">
+                <GithubIcon /> Github
+              </Button>
+            </Nav.Link>
+            <Nav.Link
+              eventKey={2}
+              href="https://t.me/animemoeus_bot"
+              target="_blank"
+            >
+              <Button variant="outline-light">
+                <TelegramIcon /> Telegram Bot
+              </Button>
+            </Nav.Link>
+          </Nav>
+        </BootstrapNavbar.Collapse>
+      </Container>
+    </BootstrapNavbar>
   );
 }
