@@ -6,7 +6,4 @@ module.exports = {
       "media.discordapp.net",
     ],
   },
-  experimental: {
-    scrollRestoration: true,
-  },
 };
