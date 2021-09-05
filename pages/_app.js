@@ -12,18 +12,7 @@ Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
-  const [images, setImages] = useState([]);
-  const [pageNow, setPageNow] = useState(1);
-
-  return (
-    <Component
-      {...pageProps}
-      images={images}
-      setImages={setImages}
-      pageNow={pageNow}
-      setPageNow={setPageNow}
-    />
-  );
+  return <Component {...pageProps} />;
 }
 
 export default MyApp;
