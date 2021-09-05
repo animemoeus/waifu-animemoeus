@@ -48,7 +48,7 @@ export default function Home(props) {
             >
               {images.map((image) => {
                 return (
-                  <div key={image.id} className="rounded border">
+                  <div key={image.id}>
                     <Link href={`/${image.image_id}/`}>
                       <a>
                         <Image
@@ -62,7 +62,7 @@ export default function Home(props) {
                             (image.width * 1) / 100
                           )}&height=${parseInt((image.height * 1) / 100)}`}
                           layout="responsive"
-                          className="rounded-md"
+                          className="rounded border shadow-sm"
                         />
                       </a>
                     </Link>
