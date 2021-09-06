@@ -18,74 +18,70 @@ export default function Detail(props) {
       <div className="min-h-screen">
         <Navbar />
 
-        <div className="container mx-auto p-1 pt-3 mb-5 xl:px-32">
-          {/* grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 p-1 border rounded shadow-lg">
-            {/* image */}
-            <div className="col-span-1 p-0 lg:p-1 lg:col-span-2">
-              <div className="border rounded shadow-md p-0 bg-gray-300 overflow-hidden">
-                <a
-                  href={props.response.original_image}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Image
-                    src={props.response.original_image}
-                    width={props.response.width}
-                    height={props.response.height}
-                    quality={100}
-                    layout="responsive"
-                    alt={`Image ${props.response.image_id} by ${props.response.creator_name}`}
-                    placeholder="blur"
-                    blurDataURL={`${props.response.thumbnail}?width=${parseInt(
-                      (props.response.width * 1) / 100
-                    )}&height=${parseInt((props.response.height * 1) / 100)}`}
-                  />
-                </a>
+        <div
+          className="container-fluid p-0 m-0 pt-2 p-1"
+          style={{ minHeight: "90.8vh" }}
+        >
+          <div
+            className="container-md border rounded shadow mb-2"
+            style={{ maxHeight: "100%" }}
+          >
+            <div className="row" style={{ maxHeight: "100%" }}>
+              <div className="col-md-7 p-0" style={{ maxHeight: "100%" }}>
+                <div className="p-1">
+                  <a
+                    href={props.response.original_image}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Image
+                      src={props.response.original_image}
+                      width={props.response.width}
+                      height={props.response.height}
+                      quality={100}
+                      layout="responsive"
+                      alt={`Image ${props.response.image_id} by ${props.response.creator_name}`}
+                      placeholder="blur"
+                      blurDataURL={`${
+                        props.response.thumbnail
+                      }?width=${parseInt(
+                        (props.response.width * 1) / 100
+                      )}&height=${parseInt((props.response.height * 1) / 100)}`}
+                      className="border rounded shadow-sm"
+                    />
+                  </a>
+                </div>
               </div>
-            </div>
-            {/* end image */}
-            {/* image info */}
-            <div className="col-span-1 p-0 pt-1 lg:p-1">
-              <div className="">
-                <h2 className="text-center text-xl font-semibold">
-                  {props.response.image_id}
-                </h2>
-                <div className="pl-2">
-                  <hr className="m-1" />
-                  {props.response.creator_name && (
+              <div className="col-md-5 p-0">
+                <div className="p-1 pt-2">
+                  <div className="text-center">
+                    <h2>{props.response.image_id} </h2>
+                  </div>
+                  <hr />
+
+                  <div className="px-3">
                     <p>Creator: {props.response.creator_name}</p>
-                  )}
-                  <br />
-                  {props.response.caption && <p>{props.response.caption}</p>}
-                  <br />
-                  {props.response.source && (
+                    <p>{props.response.caption}</p>
                     <p>
                       Source:{" "}
                       <a
                         href={props.response.source}
+                        className="text-decoration-none"
                         target="_blank"
                         rel="noreferrer"
-                        className="text-blue-700"
                       >
                         {props.response.source}
                       </a>
                     </p>
-                  )}
+                  </div>
                 </div>
               </div>
             </div>
-            {/* end image info */}
-            {/* disqus */}
-            <div className="col-span-1 p-0 lg:col-span-3 lg:p-1">
-              <hr className="my-3" />
-              <div className="container px-2">
-                <Disqus data={props.response} />
-              </div>
+            <hr className="m-0" />
+            <div className="p-2">
+              <Disqus data={props.response} />
             </div>
-            {/* end disqus */}
           </div>
-          {/* end grid */}
         </div>
       </div>
     </Layout>
