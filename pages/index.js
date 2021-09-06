@@ -21,7 +21,7 @@ export default function Home(props) {
           setHasMore(false);
         } else {
           //update next page url
-          setNextPageURL(response.next);
+          setNextPageURL(response.next.replace("http://", "https://"));
         }
 
         // update images state using data API
