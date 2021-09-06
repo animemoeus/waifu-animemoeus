@@ -9,7 +9,9 @@ import { Navbar } from "../components/molecules";
 
 export default function Home(props) {
   const [images, setImages] = useState(props.response.results);
-  const [nextPageURL, setNextPageURL] = useState(props.response.next);
+  const [nextPageURL, setNextPageURL] = useState(
+    props.response.next.replace("http://", "https://")
+  );
   const [hasMore, setHasMore] = useState(true);
 
   const fetchMoreData = () => {
@@ -22,6 +24,7 @@ export default function Home(props) {
         } else {
           //update next page url
           setNextPageURL(response.next.replace("http://", "https://"));
+          console.log(nextPageURL);
         }
 
         // update images state using data API
