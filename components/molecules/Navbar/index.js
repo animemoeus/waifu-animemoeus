@@ -1,9 +1,8 @@
-import React from "react";
+import Link from "next/link";
 import BootstrapNavbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
-
+import Nav from "react-bootstrap/Nav";
 import {
   Github as GithubIcon,
   Telegram as TelegramIcon,
@@ -17,9 +16,14 @@ export default function Navbar() {
       expand="lg"
       bg="dark"
       variant="dark"
+      className="shadow-sm"
     >
       <Container>
-        <BootstrapNavbar.Brand href="/">Waifu AnimeMoeUs</BootstrapNavbar.Brand>
+        <BootstrapNavbar.Brand>
+          <Link href="/">
+            <a className="text-decoration-none text-white">Waifu AnimeMoeUs</a>
+          </Link>
+        </BootstrapNavbar.Brand>
         <BootstrapNavbar.Toggle aria-controls="responsive-BootstrapNavbar-nav" />
         <BootstrapNavbar.Collapse id="responsive-BootstrapNavbar-nav">
           <Nav className="ms-auto">

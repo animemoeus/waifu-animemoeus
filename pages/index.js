@@ -39,7 +39,7 @@ export default function Home(props) {
             dataLength={images.length}
             next={fetchMoreData}
             hasMore={hasMore}
-            loader={<p className="text-center text-lg">Loading...</p>}
+            loader={<p className="text-center">Loading...</p>}
           >
             <Masonry
               breakpointCols={{ default: 5, 1100: 4, 700: 3, 500: 2 }}
