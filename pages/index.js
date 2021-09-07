@@ -84,7 +84,6 @@ export async function getServerSideProps({ query }) {
 
   const res = await fetch(`${url}?nsfw=${query.nsfw || false}`);
   const response = await res.json();
-  console.log(response.next);
 
   return { props: { response: response } };
 }
