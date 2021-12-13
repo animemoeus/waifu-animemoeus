@@ -55,7 +55,7 @@ export default function Home(props) {
                       <a>
                         <Image
                           src={image.thumbnail}
-                          quality={50}
+                          quality={90}
                           width={image.width}
                           height={image.height}
                           alt={`Image ${image.image_id} by ${image.creator_name}`}
