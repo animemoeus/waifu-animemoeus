@@ -2,6 +2,10 @@
 
 ---
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1ae96868-4f6d-449c-85b8-56163c5f5a2b/deploy-status)](https://app.netlify.com/sites/waifu-animemoeus/deploys)
+
+---
+
 ### Endpoint:
 
 `https://api.animemoe.us/`
