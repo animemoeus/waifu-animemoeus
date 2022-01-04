@@ -23,6 +23,7 @@
 | Path               | Params | Value          | Default |
 | ------------------ | ------ | -------------- | ------- |
 | `/waifu/`          | `nsfw` | `true`/`false` | `false` |
+| `/waifu/`          | `count` |               | `20`    |
 | `/waifu/random/`   |
 | `/waifu/image-id/` |
 
