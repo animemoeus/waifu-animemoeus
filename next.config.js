@@ -6,5 +6,4 @@ module.exports = {
       "media.discordapp.net",
     ],
   },
-  swcMinify: true,
 };
