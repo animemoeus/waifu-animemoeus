@@ -178,17 +178,12 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.0.8.tgz#be3e914e84eacf16dbebd311c0d0b44aa1174c64"
   integrity sha512-ZK5v4bJwgXldAUA8r3q9YKfCwOqoHTK/ZqRjSeRXQrBXWouoPnS4MQtgC4AXGiiBuUu5wxrRgTlv0ktmM4P1Aw==
 
-"@types/invariant@^2.2.35":
-  version "2.2.35"
-  resolved "https://registry.yarnpkg.com/@types/invariant/-/invariant-2.2.35.tgz#cd3ebf581a6557452735688d8daba6cf0bd5a3be"
-  integrity sha512-DxX1V9P8zdJPYQat1gHyY0xj3efl8gnMVjiM9iCY6y27lj+PoQWkgjt8jDqmovPqULkKVpKRg8J36iQiA+EtEg==
-
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
-"@types/prop-types@*", "@types/prop-types@^15.7.4":
+"@types/prop-types@*":
   version "15.7.4"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.4.tgz#fcf7205c25dff795ee79af1e30da2c9790808f11"
   integrity sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==
@@ -200,7 +195,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@>=16.14.8", "@types/react@>=16.9.11":
+"@types/react@*", "@types/react@>=16.9.11":
   version "17.0.20"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.20.tgz#a4284b184d47975c71658cd69e759b6bd37c3b8c"
   integrity sha512-wWZrPlihslrPpcKyCSlmIlruakxr57/buQN1RjlIeaaTWDLtJkTtRW429MoQJergvVKc4IWBpRhWw7YNh/7GVA==
@@ -1523,19 +1518,15 @@ react-bootstrap-icons@^1.8.1:
   dependencies:
     prop-types "^15.7.2"
 
-react-bootstrap@^2.2.3:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-2.2.3.tgz#1c563018c8b856071334dd5a35f25507185136e2"
-  integrity sha512-gXsAEBdDUHnOpJ2C+DDQ4mFt7tN6u6qWnTH3tqiE9jUvV6gGY8uHFp0iGBsM+yjrBwmR6bqCBFh8Z82aQj1LSw==
+react-bootstrap@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-2.3.0.tgz#bb62143f9e4d2bf0839e3e1bc8dcff582925ad51"
+  integrity sha512-O8DU/R3CHLqj1IGfqZD1mOm9Jx6tm8wmfIIshNeaIdd5AZnlO7eOPF7UyzijAxNIogN0/U3U4tWIH+9gQYlwVA==
   dependencies:
     "@babel/runtime" "^7.17.2"
     "@restart/hooks" "^0.4.6"
     "@restart/ui" "^1.2.0"
-    "@types/invariant" "^2.2.35"
-    "@types/prop-types" "^15.7.4"
-    "@types/react" ">=16.14.8"
     "@types/react-transition-group" "^4.4.4"
-    "@types/warning" "^3.0.0"
     classnames "^2.3.1"
     dom-helpers "^5.2.1"
     invariant "^2.2.4"
