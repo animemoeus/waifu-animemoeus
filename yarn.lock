@@ -1804,10 +1804,10 @@ queue-microtask@^1.2.2:
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
-react-bootstrap-icons@^1.9.1:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/react-bootstrap-icons/-/react-bootstrap-icons-1.9.1.tgz#d12b2e14a9f9c8b4d13c809c57c0e94aae6b1435"
-  integrity sha512-EOxEkiKt/ucn17cXHzUcxbVmH7YCFjV5ifrIB+aGkfxjXnGGJyBDfG5kRChoCDs1Y7vLRtgSauOq+whF751Yzg==
+react-bootstrap-icons@^1.10.2:
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/react-bootstrap-icons/-/react-bootstrap-icons-1.10.2.tgz#e8e765f5cf9672f1a6b3e9146f441db92bb104cc"
+  integrity sha512-PC72g6uARdSxZH+ViBbul3FRWKuIhiJajahwt1h0daPBDw789KqpA+x3hrJpSUyQMF0PQ9LfWxu1a0O67bqPeg==
   dependencies:
     prop-types "^15.7.2"
 
