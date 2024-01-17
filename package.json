@@ -14,7 +14,7 @@
     "next": "14",
     "nprogress": "^0.2.0",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.9.2",
+    "react-bootstrap": "^2.10.0",
     "react-bootstrap-icons": "^1.10.3",
     "react-dom": "^18.2.0",
     "react-infinite-scroll-component": "^6.1.0",
