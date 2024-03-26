@@ -35,7 +35,7 @@ export default function Detail(props) {
                     rel="noreferrer"
                   >
                     <Image
-                      src={props.response.original_image}
+                      src={props.response.original_image.replace('cdn.discordapp.com','discord-cdn.animemoe.us')}
                       width={props.response.width}
                       height={props.response.height}
                       quality={100}
