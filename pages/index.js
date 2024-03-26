@@ -54,13 +54,13 @@ export default function Home(props) {
                     <Link href={`/${image.image_id}/`}>
                       <a>
                         <Image
-                          src={image.thumbnail.replace('media.discordapp.net','discord-media.animemoe.us')}
+                          src={image.thumbnail.replace('.net','.xyz')}
                           quality={66}
                           width={image.width}
                           height={image.height}
                           alt={`Image ${image.image_id} by ${image.creator_name}`}
                           placeholder="blur"
-                          blurDataURL={`${image.thumbnail.replace('media.discordapp.net','discord-media.animemoe.us')}?width=${parseInt(
+                          blurDataURL={`${image.thumbnail.replace('.net','.xyz')}?width=${parseInt(
                             (image.width * 1) / 100
                           )}&height=${parseInt((image.height * 1) / 100)}`}
                           layout="responsive"
