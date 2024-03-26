@@ -4,6 +4,8 @@ module.exports = {
       "64.media.tumblr.com",
       "cdn.discordapp.com",
       "media.discordapp.net",
+      "cdn.discordapp.xyz",
+      "media.discordapp.xyz"
     ],
   },
 };
