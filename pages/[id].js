@@ -35,18 +35,17 @@ export default function Detail(props) {
                     rel="noreferrer"
                   >
                     <Image
-                      src={props.response.original_image.replace('.net','.xyz')}
+                      src={`https://api.animemoe.us/discord/refresh/?url=${props.response.original_image}`}
                       width={props.response.width}
                       height={props.response.height}
                       quality={100}
                       layout="responsive"
                       alt={`Image ${props.response.image_id} by ${props.response.creator_name}`}
                       placeholder="blur"
-                      blurDataURL={`${
-                        props.response.thumbnail
-                      }?width=${parseInt(
-                        (props.response.width * 1) / 100
-                      )}&height=${parseInt((props.response.height * 1) / 100)}`}
+                      blurDataURL={`https://api.animemoe.us/discord/refresh/?url=${props.response.thumbnail
+                        }?width=${parseInt(
+                          (props.response.width * 1) / 100
+                        )}&height=${parseInt((props.response.height * 1) / 100)}`}
                       className="border rounded shadow-sm"
                     />
                   </a>

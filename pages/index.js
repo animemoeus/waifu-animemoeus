@@ -52,21 +52,19 @@ export default function Home(props) {
                 return (
                   <div key={image.id}>
                     <Link href={`/${image.image_id}/`}>
-                      <a>
-                        <Image
-                          src={image.thumbnail.replace('.net','.xyz')}
-                          quality={66}
-                          width={image.width}
-                          height={image.height}
-                          alt={`Image ${image.image_id} by ${image.creator_name}`}
-                          placeholder="blur"
-                          blurDataURL={`${image.thumbnail.replace('.net','.xyz')}?width=${parseInt(
-                            (image.width * 1) / 100
-                          )}&height=${parseInt((image.height * 1) / 100)}`}
-                          layout="responsive"
-                          className="rounded border shadow-sm"
-                        />
-                      </a>
+                      <Image
+                        src={`https://api.animemoe.us/discord/refresh/?url=${image.thumbnail}`}
+                        quality={66}
+                        width={image.width}
+                        height={image.height}
+                        alt={`Image ${image.image_id} by ${image.creator_name}`}
+                        placeholder="blur"
+                        blurDataURL={`https://api.animemoe.us/discord/refresh/?url=${image.thumbnail}?width=${parseInt(
+                          (image.width * 1) / 100
+                        )}&height=${parseInt((image.height * 1) / 100)}`}
+                        layout="responsive"
+                        className="rounded border shadow-sm"
+                      />
                     </Link>
                   </div>
                 );

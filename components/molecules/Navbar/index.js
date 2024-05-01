@@ -20,8 +20,8 @@ export default function Navbar() {
     >
       <Container>
         <BootstrapNavbar.Brand>
-          <Link href="/">
-            <a className="text-decoration-none text-white">Waifu AnimeMoeUs</a>
+          <Link href="/" className="text-decoration-none text-white">
+            Waifu AnimeMoeUs
           </Link>
         </BootstrapNavbar.Brand>
         <BootstrapNavbar.Toggle aria-controls="responsive-BootstrapNavbar-nav" />
