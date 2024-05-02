@@ -30,7 +30,7 @@ export default function Detail(props) {
               <div className="col-md-7 p-0" style={{ maxHeight: "100%" }}>
                 <div className="p-1">
                   <a
-                    href={props.response.original_image}
+                    href={`https://api.animemoe.us/discord/refresh/?url=${props.response.original_image}`}
                     target="_blank"
                     rel="noreferrer"
                   >
