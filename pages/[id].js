@@ -30,19 +30,19 @@ export default function Detail(props) {
               <div className="col-md-7 p-0" style={{ maxHeight: "100%" }}>
                 <div className="p-1">
                   <a
-                    href={`https://api.animemoe.us/discord/refresh/?url=${props.response.original_image}`}
+                    href={`${props.response.original_image}`}
                     target="_blank"
                     rel="noreferrer"
                   >
                     <Image
-                      src={`https://api.animemoe.us/discord/refresh/?url=${props.response.original_image}`}
+                      src={`${props.response.original_image}`}
                       width={props.response.width}
                       height={props.response.height}
                       quality={100}
                       layout="responsive"
                       alt={`Image ${props.response.image_id} by ${props.response.creator_name}`}
                       placeholder="blur"
-                      blurDataURL={`https://api.animemoe.us/discord/refresh/?url=${props.response.thumbnail
+                      blurDataURL={`${props.response.thumbnail
                         }?width=${parseInt(
                           (props.response.width * 1) / 100
                         )}&height=${parseInt((props.response.height * 1) / 100)}`}

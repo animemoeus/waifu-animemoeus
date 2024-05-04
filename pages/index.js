@@ -53,14 +53,13 @@ export default function Home(props) {
                   <div key={image.id}>
                     <Link href={`/${image.image_id}/`}>
                       <Image
-                        src={`https://api.animemoe.us/discord/refresh/?url=${image.thumbnail}`}
+                        src={image.thumbnail}
                         quality={66}
                         width={image.width}
                         height={image.height}
                         alt={`Image ${image.image_id} by ${image.creator_name}`}
                         placeholder="blur"
-                        blurDataURL={`https://api.animemoe.us/discord/refresh/?url=${image.thumbnail}?width=${parseInt(
-                          (image.width * 1) / 100
+                        blurDataURL={`${image.thumbnail}
                         )}&height=${parseInt((image.height * 1) / 100)}`}
                         layout="responsive"
                         className="rounded border shadow-sm"
