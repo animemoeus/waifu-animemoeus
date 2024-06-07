@@ -59,8 +59,11 @@ export default function Home(props) {
                         height={image.height}
                         alt={`Image ${image.image_id} by ${image.creator_name}`}
                         placeholder="blur"
-                        blurDataURL={`${image.thumbnail}
-                        )}&height=${parseInt((image.height * 1) / 100)}`}
+                        blurDataURL={encodeURIComponent(
+                          `${image.thumbnail}&height=${parseInt(
+                            (image.height * 1) / 100
+                          )}`
+                        )}
                         layout="responsive"
                         className="rounded border shadow-sm"
                       />
