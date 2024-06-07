@@ -2,7 +2,7 @@
 
 ---
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/1ae96868-4f6d-449c-85b8-56163c5f5a2b/deploy-status)](https://app.netlify.com/sites/waifu-animemoeus/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9cdc2c63-214e-4360-9a42-9c1ba0441a1a/deploy-status)](https://app.netlify.com/sites/waifu-animemoeus/deploys)
 
 ---
 
