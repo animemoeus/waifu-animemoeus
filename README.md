@@ -31,7 +31,7 @@ Base URL: [https://api.animemoe.us/](https://api.animemoe.us/)
                 "width": 848,
                 "height": 1200
             },
-            ...
+            
         ]
     }
     ```
