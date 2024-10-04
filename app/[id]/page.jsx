@@ -1,10 +1,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import dynamic from "next/dynamic";
-const Disqus = dynamic(() => import("../components/molecules/Disqus/Disqus"), {
-  ssr: false,
-});
 import Navbar from "../components/molecules/Navbar/Navbar";
+import Disqus from "disqus-react";
 
 async function getWaifuData(id) {
   try {
@@ -22,6 +19,7 @@ async function getWaifuData(id) {
 
 export async function generateMetadata({ params }) {
   const waifu = await getWaifuData(params.id);
+  
   return {
     title: `${waifu.image_id} | AnimeMoeUs Waifu`,
     description: `Waifu ${waifu.image_id} by ${waifu.creator_name}`,

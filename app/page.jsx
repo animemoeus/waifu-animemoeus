@@ -1,58 +1,59 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import InfiniteScroll from 'react-infinite-scroll-component'
-import Link from 'next/link'
-import Masonry from 'react-masonry-css'
-import { useState } from 'react'
-import Navbar from './components/molecules/Navbar/Navbar'
+import Image from "next/image";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Link from "next/link";
+import Masonry from "react-masonry-css";
+import { useState } from "react";
+import Navbar from "./components/molecules/Navbar/Navbar";
 
 async function getInitialWaifus() {
-  const res = await fetch('https://api.animemoe.us/waifu/')
-  return res.json()
+  const res = await fetch("https://api.animemoe.us/waifu/");
+  return res.json();
 }
 
 export default function Home() {
-  const [images, setImages] = useState([])
-  const [nextPageURL, setNextPageURL] = useState('')
-  const [hasMore, setHasMore] = useState(true)
+  const [images, setImages] = useState([]);
+  const [nextPageURL, setNextPageURL] = useState("");
+  const [hasMore, setHasMore] = useState(true);
 
   useState(async () => {
-    const initialData = await getInitialWaifus()
-    setImages(initialData.results)
-    setNextPageURL(initialData.next.replace('http://', 'https://'))
-  }, [])
+    const initialData = await getInitialWaifus();
+    setImages(initialData.results);
+    setNextPageURL(initialData.next.replace("http://", "https://"));
+  }, []);
 
   const fetchMoreData = async () => {
-    const res = await fetch(nextPageURL)
-    const response = await res.json()
+    const res = await fetch(nextPageURL);
+    const response = await res.json();
 
     if (response.next === null) {
-      setHasMore(false)
+      setHasMore(false);
     } else {
-      setNextPageURL(response.next.replace('http://', 'https://'))
+      setNextPageURL(response.next.replace("http://", "https://"));
     }
 
-    setImages(prevImages => [...prevImages, ...response.results])
-  }
+    setImages((prevImages) => [...prevImages, ...response.results]);
+  };
 
   return (
-      <div className="min-h-screen">
-        <Navbar />
+    <div className="min-h-screen">
+      <Navbar />
 
-        <div className="pt-3 px-2">
-          <InfiniteScroll
-            dataLength={images.length}
-            next={fetchMoreData}
-            hasMore={hasMore}
-            loader={<p className="text-center">Loading...</p>}
+      <div className="pt-3 px-2">
+        <InfiniteScroll
+          dataLength={images.length}
+          next={fetchMoreData}
+          hasMore={hasMore}
+          loader={<p className="text-center">Loading...</p>}
+        >
+          <Masonry
+            breakpointCols={{ default: 5, 1100: 4, 700: 3, 500: 2 }}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
           >
-            <Masonry
-              breakpointCols={{ default: 5, 1100: 4, 700: 3, 500: 2 }}
-              className="my-masonry-grid"
-              columnClassName="my-masonry-grid_column"
-            >
-              {images.map((image) => (
+            {images.map((image) => {
+              return (
                 <div key={image.id}>
                   <Link href={`/${image.image_id}/`}>
                     <Image
@@ -67,14 +68,16 @@ export default function Home() {
                           (image.height * 1) / 100
                         )}`
                       )}
+                      layout="responsive"
                       className="rounded border shadow-sm"
                     />
                   </Link>
                 </div>
-              ))}
-            </Masonry>
-          </InfiniteScroll>
-        </div>
+              );
+            })}
+          </Masonry>
+        </InfiniteScroll>
       </div>
-  )
+    </div>
+  );
 }
