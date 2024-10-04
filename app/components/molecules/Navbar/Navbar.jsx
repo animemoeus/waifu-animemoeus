@@ -1,3 +1,4 @@
+'use client'
 import Link from "next/link";
 import BootstrapNavbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
@@ -35,7 +36,7 @@ export default function Navbar() {
                 <GithubIcon /> Github
               </Button>
             </Nav.Link>
-            {/* <Nav.Link
+            <Nav.Link
               eventKey={2}
               href="https://t.me/animemoeus_bot"
               target="_blank"
@@ -43,7 +44,7 @@ export default function Navbar() {
               <Button variant="outline-light">
                 <TelegramIcon /> Telegram Bot
               </Button>
-            </Nav.Link> */}
+            </Nav.Link>
           </Nav>
         </BootstrapNavbar.Collapse>
       </Container>

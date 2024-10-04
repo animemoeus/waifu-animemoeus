@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ProgressBarWithSuspense />
+        {/* <ProgressBarWithSuspense /> */}
         {children}
       </body>
     </html>

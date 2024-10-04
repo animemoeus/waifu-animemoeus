@@ -1,27 +1,27 @@
-'use client'
+"use client";
 
-import { Suspense, useEffect } from 'react'
-import { usePathname, useSearchParams } from 'next/navigation'
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
+import { Suspense, useEffect } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
 
 function ProgressBar() {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
-    const handleStart = () => NProgress.start()
-    const handleComplete = () => NProgress.done()
+    const handleStart = () => NProgress.start();
+    const handleComplete = () => NProgress.done();
 
-    handleStart()
+    handleStart();
 
     // Complete progress bar when the new page is rendered
     return () => {
-      handleComplete()
-    }
-  }, [pathname, searchParams])
+      handleComplete();
+    };
+  }, [pathname, searchParams]);
 
-  return null
+  return null;
 }
 
 export default function ProgressBarWithSuspense() {
@@ -29,5 +29,5 @@ export default function ProgressBarWithSuspense() {
     <Suspense fallback={null}>
       <ProgressBar />
     </Suspense>
-  )
+  );
 }
