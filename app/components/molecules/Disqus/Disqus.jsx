@@ -1,3 +1,4 @@
+'use client'
 import { DiscussionEmbed } from "disqus-react";
 
 export default function Disqus(props) {
