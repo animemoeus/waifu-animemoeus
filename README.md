@@ -1,97 +1,36 @@
-# Waifu AnimeMoeUs
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Welcome to the **AnimeMoe API** GitHub repository! This project provides access to a collection of anime-themed images (waifus) with comprehensive metadata such as creator information, dimensions, and more.
+## Getting Started
 
-### API Overview
+First, run the development server:
 
-Base URL: [https://api.animemoe.us/](https://api.animemoe.us/)
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-### Endpoints
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-| Method | Path | Description |
-|--------|------|-------------|
-| **GET** | `/waifu/` | Retrieve a list of waifus, with pagination and filtering options (e.g., NSFW). |
-| **GET** | `/waifu/random/` | Fetch a random waifu. |
-| **GET** | `/waifu/image-id/` | Get details for a specific waifu by `image_id`. |
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-#### Example Responses
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-- **Waifu List** (`/waifu/`)
-    ```json
-    {
-        "count": 14043,
-        "next": "http://api.animemoe.us/waifu/?page=2",
-        "previous": null,
-        "results": [
-            {
-                "id": 14056,
-                "image_id": "856740902361235486",
-                "thumbnail": "https://cdn.discordapp.com/attachments/752705854934876234/856740902361235486/waifu-animemoeus.jpg",
-                "creator_name": "しま次郎",
-                "width": 848,
-                "height": 1200
-            },
-            
-        ]
-    }
-    ```
+## Learn More
 
-- **Random Waifu** (`/waifu/random/`)
-    ```json
-    {
-      "id": 11583,
-      "image_id": "649450620639723520",
-      "original_image": "https://64.media.tumblr.com/df93f22e3461a4c3aa8fe78b5315859b/c4539d6c4e9c9934-c7/s1280x1920/a963afdebdd705562cb1ab45cd2d04c58d27b15b.jpg",
-      "thumbnail": "https://64.media.tumblr.com/df93f22e3461a4c3aa8fe78b5315859b/c4539d6c4e9c9934-c7/s540x810/4f7a0d0a07fbd8ac748ae4660dd3d74c11cb153a.jpg",
-      "creator_name": "月うさぎ＠お仕事skeb募集",
-      "creator_username": "tukiman02",
-      "caption": "うちの娘2「ベリー」ちゃん\n「んにゃ～もう朝にゃ～？」",
-      "source": "https://t.co/oPO7rgnmTq",
-      "width": 1200,
-      "height": 801
-    }
-    ```
+To learn more about Next.js, take a look at the following resources:
 
-- **Waifu Detail** (`/waifu/:image_id/`)
-    ```json
-    {
-      "id": 14041,
-      "image_id": "856739291803287552",
-      "original_image": "https://cdn.discordapp.com/attachments/752705854934876234/856739291803287552/waifu-animemoeus.jpg",
-      "thumbnail": "https://cdn.discordapp.com/attachments/752705854934876234/856739291803287552/waifu-animemoeus.jpg",
-      "creator_name": "torino",
-      "creator_username": "TorinoAqua",
-      "caption": "ショッピングの帰りにぬいぐるみを取ってあげたらものすごく喜んでくれるミホノブルボンさん",
-      "source": "https://t.co/Rf7SOd46BJ",
-      "width": 756,
-      "height": 1200
-    }
-    ```
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-### Parameters
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-- **`nsfw`** (`true`/`false`): Include or exclude NSFW content. Default: `false`.
-- **`count`**: Set the number of results to return. Default: `20`.
+## Deploy on Vercel
 
-### Usage Examples
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-- Fetch waifus with NSFW content excluded:
-    ```bash
-    curl -X GET "https://api.animemoe.us/waifu/?nsfw=false&count=20"
-    ```
-
-- Get a random waifu:
-    ```bash
-    curl -X GET "https://api.animemoe.us/waifu/random/"
-    ```
-
-- Fetch details for a specific waifu by `image_id`:
-    ```bash
-    curl -X GET "https://api.animemoe.us/waifu/856739291803287552/"
-    ```
-
-### Future Enhancements
-
-- Adding authentication and rate limiting.
-- Support for additional waifu-related queries (e.g., search by creator or tag).
-- Enhanced filtering options (by dimension, popularity, etc.).
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
