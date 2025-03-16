@@ -3,8 +3,9 @@
 import ImageCard from "@/components/ui/image-card";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
+import Masonry from 'react-masonry-css'
 
-interface IWaifu {
+export interface IWaifu {
   id: number;
   image_id: string;
   original_image: string;
@@ -59,12 +60,21 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Home Page</h1>
       {isLoadingWaifuResponse && <p>Loading...</p>}
 
-      {waifuResponse?.results.map((waifu) => (
-        <ImageCard key={waifu.id} imageUrl={waifu.thumbnail} caption={waifu.caption} width={waifu.width} height={waifu.height} blurDataURL={waifu.blur_data_url} />
-      ))}
+      <Masonry
+
+        breakpointCols={{ default: 5, 1100: 4, 700: 3, 500: 2 }}
+        className="my-masonry-grid pl-1 pr-2"
+        columnClassName="my-masonry-grid_column">
+        {waifuResponse?.results.map((waifu) => (
+          <div className="arter rounded-base">
+            <ImageCard key={waifu.id} imageUrl={waifu.thumbnail} caption={waifu.caption} width={waifu.width} height={waifu.height} blurDataURL={waifu.blur_data_url} raw={waifu} />
+          </div>
+        ))}
+      </Masonry>
+
+
 
 
     </div>
