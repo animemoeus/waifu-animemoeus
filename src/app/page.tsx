@@ -62,14 +62,15 @@ export default function Home() {
     <div>
       {isLoadingWaifuResponse && <p>Loading...</p>}
 
-      <Masonry
+      <h1 className="text-center mt-2 mb-3 text-2xl md:text-3xl lg:text-4xl font-bold overflow-auto">instagram.com/arter_tendean</h1>
 
+      <Masonry
         breakpointCols={{ default: 5, 1100: 4, 700: 3, 500: 2 }}
         className="my-masonry-grid pl-1 pr-2"
         columnClassName="my-masonry-grid_column">
         {waifuResponse?.results.map((waifu) => (
-          <div className="arter rounded-base">
-            <ImageCard key={waifu.id} imageUrl={waifu.thumbnail} caption={waifu.caption} width={waifu.width} height={waifu.height} blurDataURL={waifu.blur_data_url} raw={waifu} />
+          <div key={waifu.id} className="rounded-base">
+            <ImageCard imageUrl={waifu.thumbnail} caption={waifu.caption} width={waifu.width} height={waifu.height} blurDataURL={waifu.blur_data_url} raw={waifu} />
           </div>
         ))}
       </Masonry>
