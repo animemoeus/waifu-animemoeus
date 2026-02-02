@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
-import { waifuService } from '@/services/waifuService'
 import type { WaifuPaginationParams } from '@/types/waifu'
+import { waifuService } from '@/services/waifuService'
 
 export const useWaifuInfiniteQuery = (params: WaifuPaginationParams = {}) => {
   return useInfiniteQuery({

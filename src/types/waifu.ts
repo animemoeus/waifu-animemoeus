@@ -19,7 +19,7 @@ export interface WaifuApiResponse {
   count: number
   next: string | null
   previous: string | null
-  results: Waifu[]
+  results: Array<Waifu>
 }
 
 export interface WaifuPaginationParams {

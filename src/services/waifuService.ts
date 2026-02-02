@@ -10,12 +10,9 @@ const apiClient = axios.create({
 
 export const waifuService = {
   async fetchWaifus(
-    params: WaifuPaginationParams = {}
+    params: WaifuPaginationParams = {},
   ): Promise<WaifuApiResponse> {
-    const {
-      page = 1,
-      is_nsfw = false,
-    } = params
+    const { page = 1, is_nsfw = false } = params
 
     const response = await apiClient.get<WaifuApiResponse>('/waifu/', {
       params: {

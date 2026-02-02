@@ -7,9 +7,9 @@ import {
   Home,
   Menu,
   Network,
+  Sparkles,
   SquareFunction,
   StickyNote,
-  Sparkles,
   X,
 } from 'lucide-react'
 

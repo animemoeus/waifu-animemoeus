@@ -1,10 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useWaifuInfiniteQuery } from '@/hooks/useWaifuInfiniteQuery'
-import { WaifuCard } from '@/components/WaifuCard'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import Masonry from 'react-masonry-css'
 import { useMemo } from 'react'
 import { Loader2 } from 'lucide-react'
+import { WaifuCard } from '@/components/WaifuCard'
+import { useWaifuInfiniteQuery } from '@/hooks/useWaifuInfiniteQuery'
 
 export const Route = createFileRoute('/')({
   component: WaifuGallery,
@@ -35,7 +35,7 @@ function WaifuGallery() {
       <div className="flex items-center justify-center w-screen h-screen">
         <div className="text-center">
           <p className="text-lg text-red-600 mb-4">
-            Error loading waifus: {error?.message || 'Unknown error'}
+            Error loading waifus: {error.message || 'Unknown error'}
           </p>
           <button
             onClick={() => window.location.reload()}
