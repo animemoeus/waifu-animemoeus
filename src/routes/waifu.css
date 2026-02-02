@@ -1,0 +1,31 @@
+.masonry-grid {
+  display: flex;
+  margin-left: -1rem;
+  width: auto;
+}
+
+.masonry-grid-column {
+  padding-left: 1rem;
+  background-clip: padding-box;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 640px) {
+  .masonry-grid {
+    margin-left: -0.5rem;
+  }
+
+  .masonry-grid-column {
+    padding-left: 0.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .masonry-grid {
+    margin-left: -0.75rem;
+  }
+
+  .masonry-grid-column {
+    padding-left: 0.75rem;
+  }
+}
