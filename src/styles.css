@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+body {
+  @apply m-0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+/* Masonry Grid Styles */
+.masonry-grid {
+  display: flex;
+  margin-left: -1rem;
+  width: auto;
+}
+
+.masonry-grid-column {
+  padding-left: 1rem;
+  background-clip: padding-box;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 640px) {
+  .masonry-grid {
+    margin-left: -0.5rem;
+  }
+
+  .masonry-grid-column {
+    padding-left: 0.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .masonry-grid {
+    margin-left: -0.75rem;
+  }
+
+  .masonry-grid-column {
+    padding-left: 0.75rem;
+  }
+}
