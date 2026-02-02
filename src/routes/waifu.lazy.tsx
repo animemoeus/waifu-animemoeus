@@ -1,5 +1,6 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
 import { useWaifuInfiniteQuery } from '@/hooks/useWaifuInfiniteQuery'
+import { WaifuCard } from '@/components/WaifuCard'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import Masonry from 'react-masonry-css'
 import { useMemo } from 'react'
@@ -93,59 +94,11 @@ function WaifuPage() {
               {waifus.map((waifu) => {
                 const aspectRatio = waifu.width / waifu.height
                 return (
-                  <div
+                  <WaifuCard
                     key={waifu.id}
-                    className="group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white mb-4"
-                  >
-                    {/* Image Container */}
-                    <div
-                      className="relative overflow-hidden bg-gray-200"
-                      style={{ aspectRatio: `${aspectRatio}` }}
-                    >
-                      {/* Blur placeholder */}
-                      <img
-                        src={waifu.blur_data_url}
-                        alt={waifu.caption}
-                        className="absolute inset-0 w-full h-full blur-sm"
-                        aria-hidden
-                      />
-                      {/* Main image */}
-                      <img
-                        src={waifu.thumbnail}
-                        alt={waifu.caption}
-                        className="relative w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        loading="lazy"
-                      />
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-4">
-                      <h3 className="font-semibold text-gray-800 truncate mb-1">
-                        {waifu.caption}
-                      </h3>
-                      <p className="text-sm text-gray-600 truncate mb-2">
-                        by {waifu.creator_name}
-                      </p>
-                      <div className="flex items-center gap-2 text-xs text-gray-500 mb-3">
-                        <span>
-                          {waifu.width}x{waifu.height}
-                        </span>
-                        {waifu.is_nsfw && (
-                          <span className="px-2 py-1 bg-red-100 text-red-700 rounded">
-                            NSFW
-                          </span>
-                        )}
-                      </div>
-                      <a
-                        href={waifu.source}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-500 hover:text-blue-700 text-sm font-medium"
-                      >
-                        View Source →
-                      </a>
-                    </div>
-                  </div>
+                    waifu={waifu}
+                    aspectRatio={aspectRatio}
+                  />
                 )
               })}
             </Masonry>
