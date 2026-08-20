@@ -1,17 +1,7 @@
 import { useState } from 'react'
+import { Link } from '@tanstack/react-router'
 import { ExternalLink } from 'lucide-react'
-
-interface Waifu {
-  id: number
-  caption: string
-  blur_data_url: string
-  thumbnail: string
-  creator_name: string
-  width: number
-  height: number
-  is_nsfw: boolean
-  source: string
-}
+import type { Waifu } from '@/types/waifu'
 
 interface WaifuCardProps {
   waifu: Waifu
@@ -30,17 +20,14 @@ export function WaifuCard({ waifu, aspectRatio }: WaifuCardProps) {
     ? waifu.blur_data_url
     : `data:image/jpeg;base64,${waifu.blur_data_url}`
 
-  const handleImageClick = () => {
-    window.open(waifu.thumbnail, '_blank')
-  }
-
   return (
     <div className="group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 mb-4">
-      {/* Image Container */}
-      <div
-        className="relative overflow-hidden bg-gray-200 cursor-pointer"
+      {/* Image Container linking to the detail page */}
+      <Link
+        to="/waifu/$imageId"
+        params={{ imageId: waifu.image_id }}
+        className="relative block overflow-hidden bg-gray-200 cursor-pointer"
         style={{ aspectRatio: `${aspectRatio}` }}
-        onClick={handleImageClick}
       >
         {/* Blur placeholder - always visible as background */}
         <img
@@ -81,17 +68,20 @@ export function WaifuCard({ waifu, aspectRatio }: WaifuCardProps) {
               NSFW
             </span>
           )}
-          <a
-            href={waifu.source}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-300 hover:text-blue-100 transition-colors inline-block"
-            title="View Source"
-          >
-            <ExternalLink size={20} />
-          </a>
+          {waifu.source && (
+            <a
+              href={waifu.source}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="text-blue-300 hover:text-blue-100 transition-colors inline-block w-fit"
+              title="View Source"
+            >
+              <ExternalLink size={20} />
+            </a>
+          )}
         </div>
-      </div>
+      </Link>
     </div>
   )
 }
