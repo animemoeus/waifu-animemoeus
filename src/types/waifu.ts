@@ -22,7 +22,18 @@ export interface WaifuApiResponse {
   results: Array<Waifu>
 }
 
+export interface WaifuSimilarApiResponse {
+  next: string | null
+  previous: string | null
+  results: Array<Waifu>
+}
+
 export interface WaifuPaginationParams {
   page?: number
+  is_nsfw?: boolean
+}
+
+export interface WaifuSimilarParams {
+  cursor?: string
   is_nsfw?: boolean
 }
