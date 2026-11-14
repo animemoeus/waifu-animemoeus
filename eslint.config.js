@@ -2,4 +2,14 @@
 
 import { tanstackConfig } from '@tanstack/eslint-config'
 
-export default [...tanstackConfig]
+export default [
+  ...tanstackConfig,
+  {
+    ignores: ['.output/**'],
+  },
+  {
+    settings: {
+      'import-x/internal-regex': '^$',
+    },
+  },
+]
