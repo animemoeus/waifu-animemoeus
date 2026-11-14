@@ -1,5 +1,18 @@
 @import 'tailwindcss';
 
+.no-scrollbar,
+html,
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   @apply m-0;
   font-family:

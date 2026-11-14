@@ -49,7 +49,7 @@ function WaifuGallery() {
   }
 
   return (
-    <div className="w-full min-h-screen overflow-x-hidden bg-gradient-to-br from-pink-50 to-blue-50">
+    <div className="w-full min-h-screen overflow-x-hidden bg-gradient-to-br from-pink-50/70 to-blue-50/70">
       <InfiniteScroll
         dataLength={waifus.length}
         next={() => fetchNextPage()}
