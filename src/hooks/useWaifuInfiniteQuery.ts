@@ -1,25 +1,27 @@
-import { useInfiniteQuery } from '@tanstack/react-query'
+import { infiniteQueryOptions, useInfiniteQuery } from '@tanstack/react-query'
 import type { WaifuPaginationParams } from '@/types/waifu'
+import { extractQueryParamFromUrl } from '@/lib/waifuUtils'
 import { waifuService } from '@/services/waifuService'
 
-export const useWaifuInfiniteQuery = (params: WaifuPaginationParams = {}) => {
-  return useInfiniteQuery({
+export const waifusInfiniteQueryOptions = (
+  params: WaifuPaginationParams = {},
+) =>
+  infiniteQueryOptions({
     queryKey: ['waifus', params],
-    queryFn: async ({ pageParam = 1 }) => {
-      return waifuService.fetchWaifus({
+    queryFn: ({ pageParam }) =>
+      waifuService.fetchWaifus({
         ...params,
         page: pageParam,
-      })
-    },
+      }),
     getNextPageParam: (lastPage) => {
-      // Parse the next URL to extract page number
-      if (lastPage.next) {
-        const url = new URL(lastPage.next)
-        const pageParam = url.searchParams.get('page')
-        return pageParam ? parseInt(pageParam, 10) : undefined
-      }
-      return undefined
+      const pageParam = extractQueryParamFromUrl(lastPage.next, 'page')
+      if (!pageParam) return undefined
+      const parsed = Number.parseInt(pageParam, 10)
+      return Number.isNaN(parsed) ? undefined : parsed
     },
     initialPageParam: 1,
   })
+
+export const useWaifuInfiniteQuery = (params: WaifuPaginationParams = {}) => {
+  return useInfiniteQuery(waifusInfiniteQueryOptions(params))
 }
