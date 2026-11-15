@@ -12,7 +12,7 @@ An infinite-scroll anime illustration gallery built with TanStack Start, React 1
 ## Scripts
 
 - `npm run dev` — Start the Vite development server on port 3000
-- `npm run build` — Build client and SSR Nitro bundles into `.output/`
+- `npm run build` — Build client and SSR Nitro bundles
 - `npm run preview` — Preview the production build locally
 - `npm test` — Run unit tests with Vitest
 - `npm run lint` — Run ESLint
