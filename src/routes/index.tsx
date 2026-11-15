@@ -1,113 +1,252 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { AlertCircle, ArrowUp, Loader2, RotateCw } from 'lucide-react'
+import { useMemo } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import Masonry from 'react-masonry-css'
-import { useMemo } from 'react'
-import { Loader2 } from 'lucide-react'
+import { GalleryHeader } from '@/components/GalleryHeader'
 import { WaifuCard } from '@/components/WaifuCard'
-import { useWaifuInfiniteQuery } from '@/hooks/useWaifuInfiniteQuery'
+import {
+  useWaifuInfiniteQuery,
+  waifusInfiniteQueryOptions,
+} from '@/hooks/useWaifuInfiniteQuery'
+import { MASONRY_BREAKPOINTS, getSafeAspectRatio } from '@/lib/waifuUtils'
+import { WaifuApiError } from '@/services/waifuService'
+
+function getGalleryErrorMessage(error: unknown): string {
+  if (error instanceof WaifuApiError) {
+    return error.message
+  }
+  return 'Unable to connect to the AnimeMoe gallery right now. Please try again.'
+}
 
 export const Route = createFileRoute('/')({
+  loader: async ({ context }) => {
+    try {
+      await context.queryClient.prefetchInfiniteQuery(
+        waifusInfiniteQueryOptions({ is_nsfw: false }),
+      )
+    } catch {
+      // Let client query state render the recoverable error UI
+    }
+  },
+  head: () => ({
+    meta: [
+      {
+        title: 'Anime Waifus Gallery',
+      },
+      {
+        name: 'description',
+        content:
+          'Browse curated anime illustrations and discover visually similar artwork from AnimeMoe.',
+      },
+    ],
+  }),
   component: WaifuGallery,
 })
 
 function WaifuGallery() {
-  const { data, fetchNextPage, hasNextPage, isLoading, isError, error } =
-    useWaifuInfiniteQuery({ is_nsfw: false })
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isLoading,
+    isError,
+    error,
+    refetch,
+    isFetchingNextPage,
+    isFetchNextPageError,
+  } = useWaifuInfiniteQuery({ is_nsfw: false })
 
   const waifus = useMemo(
-    () => data?.pages.flatMap((page) => page.results) || [],
+    () =>
+      data?.pages
+        .flatMap((page) => page.results)
+        .filter((item) => !item.is_nsfw) ?? [],
     [data],
   )
 
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center w-screen h-screen">
-        <div className="text-center">
-          <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4" />
-          <p className="text-lg text-gray-600">Loading waifus...</p>
-        </div>
-      </div>
-    )
-  }
-
-  if (isError) {
-    return (
-      <div className="flex items-center justify-center w-screen h-screen">
-        <div className="text-center">
-          <p className="text-lg text-red-600 mb-4">
-            Error loading waifus: {error.message || 'Unknown error'}
-          </p>
-          <button
-            onClick={() => window.location.reload()}
-            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-          >
-            Retry
-          </button>
-        </div>
-      </div>
-    )
+  const scrollToTop = () => {
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+    })
   }
 
   return (
-    <div className="w-full min-h-screen overflow-x-hidden bg-gradient-to-br from-pink-50/70 to-blue-50/70">
-      <InfiniteScroll
-        dataLength={waifus.length}
-        next={() => fetchNextPage()}
-        hasMore={hasNextPage || false}
-        loader={
-          <div className="flex justify-center items-center py-8">
-            <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
-          </div>
-        }
-        endMessage={
-          <div className="text-center py-8">
-            <p className="text-gray-600 text-lg">
-              You've reached the end! ({waifus.length} waifus loaded)
-            </p>
-          </div>
-        }
-      >
-        <div className="w-full max-w-7xl mx-auto px-4 py-8">
-          <div className="mb-8">
-            <h1 className="text-4xl font-bold text-gray-800 mb-2">
-              Anime Waifus Gallery
-            </h1>
-            <p className="text-gray-600">
-              Browse beautiful anime characters from AnimeMoe
-            </p>
-          </div>
+    <>
+      <GalleryHeader />
 
-          {waifus.length > 0 ? (
-            <Masonry
-              breakpointCols={{
-                default: 6,
-                1536: 5,
-                1280: 4,
-                1024: 3,
-                768: 2,
-                640: 1,
-              }}
-              className="masonry-grid"
-              columnClassName="masonry-grid-column"
-            >
-              {waifus.map((waifu) => {
-                const aspectRatio = waifu.width / waifu.height
-                return (
-                  <WaifuCard
-                    key={waifu.id}
-                    waifu={waifu}
-                    aspectRatio={aspectRatio}
-                  />
-                )
-              })}
-            </Masonry>
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-gray-600">No waifus found</p>
+      <main
+        id="main-content"
+        className="relative z-10 w-full min-h-[calc(100vh-4rem)] overflow-x-hidden text-ink"
+      >
+        {isLoading ? (
+          <div
+            role="status"
+            aria-live="polite"
+            className="flex w-full min-h-[60vh] items-center justify-center px-4"
+          >
+            <div className="text-center">
+              <Loader2
+                className="mx-auto mb-4 h-10 w-10 animate-spin text-accent"
+                aria-hidden="true"
+              />
+              <p className="text-base font-medium text-muted">
+                Loading gallery...
+              </p>
             </div>
-          )}
-        </div>
-      </InfiniteScroll>
-    </div>
+          </div>
+        ) : isError && waifus.length === 0 ? (
+          <div
+            role="alert"
+            className="flex w-full min-h-[60vh] items-center justify-center px-4"
+          >
+            <div className="w-full max-w-md rounded-2xl border border-line bg-elevated/95 p-8 text-center shadow-sm">
+              <AlertCircle
+                className="mx-auto mb-4 h-10 w-10 text-danger"
+                aria-hidden="true"
+              />
+              <h1 className="text-2xl font-bold tracking-tight text-ink">
+                Could not load artworks
+              </h1>
+              <p className="mt-2 text-sm text-muted">
+                {getGalleryErrorMessage(error)}
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  void refetch()
+                }}
+                className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-accent-contrast transition-colors hover:bg-accent-hover"
+              >
+                <RotateCw className="h-4 w-4" aria-hidden="true" />
+                Try again
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6">
+            <div className="mb-8">
+              <h1 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+                Anime Waifus Gallery
+              </h1>
+              <p className="mt-2 max-w-[65ch] text-base text-muted">
+                Browse curated anime illustrations from AnimeMoe.
+              </p>
+            </div>
+
+            {waifus.length > 0 ? (
+              <>
+                <InfiniteScroll
+                  dataLength={waifus.length}
+                  next={() => {
+                    if (!isFetchingNextPage && !isFetchNextPageError) {
+                      void fetchNextPage()
+                    }
+                  }}
+                  hasMore={Boolean(hasNextPage)}
+                  loader={
+                    isFetchNextPageError ? null : (
+                      <div
+                        role="status"
+                        aria-live="polite"
+                        className="flex items-center justify-center gap-2 py-8 text-sm text-muted"
+                      >
+                        <Loader2
+                          className="h-6 w-6 animate-spin text-accent"
+                          aria-hidden="true"
+                        />
+                        <span>Loading more artworks...</span>
+                      </div>
+                    )
+                  }
+                  endMessage={
+                    !isFetchNextPageError ? (
+                      <div className="flex flex-col items-center gap-4 py-10 text-center">
+                        <p className="tabular-nums text-sm text-muted">
+                          You&apos;ve reached the end ({waifus.length}{' '}
+                          {waifus.length === 1 ? 'artwork' : 'artworks'}{' '}
+                          loaded).
+                        </p>
+                        <button
+                          type="button"
+                          onClick={scrollToTop}
+                          className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-line bg-elevated px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-line-strong hover:bg-subtle"
+                        >
+                          <ArrowUp className="h-4 w-4" aria-hidden="true" />
+                          Back to top
+                        </button>
+                      </div>
+                    ) : null
+                  }
+                >
+                  <Masonry
+                    breakpointCols={MASONRY_BREAKPOINTS}
+                    className="masonry-grid"
+                    columnClassName="masonry-grid-column"
+                  >
+                    {waifus.map((waifu) => (
+                      <WaifuCard
+                        key={waifu.image_id || waifu.id}
+                        waifu={waifu}
+                        aspectRatio={getSafeAspectRatio(
+                          waifu.width,
+                          waifu.height,
+                        )}
+                      />
+                    ))}
+                  </Masonry>
+                </InfiniteScroll>
+
+                {isFetchNextPageError && (
+                  <div
+                    role="alert"
+                    className="mx-auto my-8 flex max-w-md flex-col items-center gap-3 rounded-2xl border border-line bg-elevated/95 p-6 text-center shadow-sm"
+                  >
+                    <p className="text-sm font-medium text-danger">
+                      Could not load additional artworks.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        void fetchNextPage()
+                      }}
+                      className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-contrast transition-colors hover:bg-accent-hover"
+                    >
+                      <RotateCw className="h-4 w-4" aria-hidden="true" />
+                      Retry loading more
+                    </button>
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="mx-auto my-12 max-w-md rounded-2xl border border-line bg-elevated/95 p-8 text-center shadow-sm">
+                <h2 className="text-lg font-semibold text-ink">
+                  No artworks found
+                </h2>
+                <p className="mt-2 text-sm text-muted">
+                  No illustrations are available right now.
+                </p>
+                <div className="mt-6 flex flex-wrap justify-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      void refetch()
+                    }}
+                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-line bg-subtle px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-line-strong hover:bg-canvas"
+                  >
+                    <RotateCw className="h-4 w-4" aria-hidden="true" />
+                    Refresh
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </main>
+    </>
   )
 }
